@@ -94,8 +94,6 @@ new Vue({
             }, (response) => {
                 console.log(response);
             });
-
-            //this.jwtCodeDecode = "nJwt.verify(\""+this.jwt+"\",\""+this.jwtKey+"\", 'HS526');";
         }
     }
 });
