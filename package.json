@@ -8,5 +8,10 @@
     "gulp": "^3.9.1",
     "laravel-elixir": "^5.0.0",
     "bootstrap-sass": "^3.3.0"
+  },
+  "dependencies": {
+    "json-lint": "^0.1.0",
+    "njwt": "^0.3.0",
+    "vue-resource": "^0.8.0"
   }
 }
