@@ -22,6 +22,9 @@
 
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/codemirror.css">
+
+
 </head>
 <body>
 <div id="app">
@@ -56,12 +59,12 @@
             </p>
         </div>
 
-            <div class="row text-center">
+            <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
                     <textarea name="jwt" rows="6" v-model="jwt.token" style="width:100%; font-size: 30px" v-on:keyup="decode" v-on:change="decode"></textarea>
                 </div>
             </div>
-            <div class="row text-center">
+            <div class="row">
                 <div class="col-sm-4 col-sm-offset-2">
                     <h3>Header</h3>
                     <textarea id="jwtHeader" rows="10" v-model="jwt.header" style="width:100%; font-size: 30px" disabled></textarea>
@@ -71,7 +74,7 @@
                     <textarea id="jwtPayload" rows="10" v-model="jwt.payload" style="width:100%; font-size: 30px" v-on:keyup="encode"></textarea>
                 </div>
             </div>
-        <div class="row text-center">
+        <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <h3>Signature (signing key)</h3>
                 <div class="form-group">
@@ -85,39 +88,38 @@
 
 
 
-<section id="section-1" class="container">
+<section id="section-1">
+    <div class="container feature">
         <h2> Code for @{{ jwtLibrary }} </h2>
-        <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/nJwt')">jwtk/nJwt</span>
-        <span class="btn btn-sm btn-default" v-on:click="generateCode('firebase/php-jwt')">firebase/php-jwt</span>
-        <div class="row">
-            <div class="col-sm-6">
-                <textarea  style="width:100%; font-size: 30px" rows="10" id="jwtCodeEncode" >@{{ jwt.codeEncode }}</textarea>
+        <p>
+            <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/nJwt')">jwtk/nJwt</span>
+            <span class="btn btn-sm btn-default" v-on:click="generateCode('firebase/php-jwt')">firebase/php-jwt</span>
+            <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/jjwt')">jwtk/jjwt</span>
+            <div class="row">
+                <div class="col-sm-6">
+                    <textarea  style="width:100%; font-size: 30px" rows="10" id="jwtCodeEncode" >@{{ jwt.codeEncode }}</textarea>
+                </div>
+                <div class="col-sm-6">
+                    <textarea style="width:100%; font-size: 30px" rows="10" id="jwtCodeDecode" >@{{ jwt.codeDecode }}</textarea>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <textarea style="width:100%; font-size: 30px" rows="10" id="jwtCodeDecode" >@{{ jwt.codeDecode }}</textarea>
-            </div>
-        </div>
-
-
         </p>
+    </div>
 </section>
 <section id="section-2" class="section-bg">
     <div class="container feature">
         <h2>What is a JWT?</h2>
         <p class="text-center">
             In its simplest form, a JWT has 3 distinct components which are base64 encoded for transport:
-        <div class="kelsey-special">
-            1. Header: contains the token metadata and the type of hashing algorithm used
-            <br/>
-            2. Payload: contains any information (claims) that you want signed
-            <br/>
-            3. Signature: headers and claims digitally signed using the algorithm specified in the header
-        </div>
+            <div class="kelsey-special">
+                1. Header: contains the token metadata and the type of hashing algorithm used
+                <br/>
+                2. Payload: contains any information (claims) that you want signed
+                <br/>
+                3. Signature: headers and claims digitally signed using the algorithm specified in the header
+            </div>
         </p>
     </div>
-</section>
-<section id="section-3">
-
 </section>
 <footer>
     <div class="container">
@@ -138,6 +140,7 @@
     </div>
 </footer>
 </div>
+<script type="text/javascript" src="{{asset('/js/codemirror.js')}}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.8.0/vue-resource.js"></script>
 <script type="text/javascript" src="/js/home.js"></script>
@@ -149,7 +152,7 @@
 
         var h2 = document.querySelector('#' + sectionId + ' > .feature > h2');
         var p = document.querySelector('#' + sectionId + ' > .feature > p');
-        var devtools = document.querySelector('#' + sectionId + ' > .feature > .devtools');
+        var devtools = document.querySelector('#' + sectionId + ' > .feature > p > div');
 
         if (h2.className.indexOf('animated') === -1) {
             h2.className = h2.className + ' animated delay-200 ' + animation;
@@ -173,17 +176,14 @@
             }
         }
 
-        if (document.body.scrollTop + window.innerHeight > 1070 || document.documentElement.scrollTop + window.innerHeight > 1070) {
+        if (document.body.scrollTop + window.innerHeight > 1500 || document.documentElement.scrollTop + window.innerHeight > 1500) {
             setTimeout(animateSection.bind(null, 1), 100);
         }
 
-        if (document.body.scrollTop + window.innerHeight > 1500 || document.documentElement.scrollTop + window.innerHeight > 1500) {
+        if (document.body.scrollTop + window.innerHeight > 2200 || document.documentElement.scrollTop + window.innerHeight > 2200) {
             setTimeout(animateSection.bind(null, 2), 100);
         }
 
-        if (document.body.scrollTop + window.innerHeight > 2110 || document.documentElement.scrollTop + window.innerHeight > 2110) {
-            setTimeout(animateSection.bind(null, 3), 100);
-        }
     }
 
     window.onscroll = scrollHandler;

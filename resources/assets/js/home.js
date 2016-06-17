@@ -1,6 +1,14 @@
 var uuid = require('uuid');
 var nJwt = require('njwt');
 
+var CodeMirror = require('codemirror');
+
+var codeMirrorOptions = {
+    readOnly: true,
+    lineNumbers: true,
+    theme: 'yeti'
+};
+
 new Vue({
     el: '#app',
 
@@ -19,10 +27,19 @@ new Vue({
     },
 
     ready() {
+        //CodeMirror.fromTextArea(document.getElementById('jwtHeader'), {
+        //    readOnly: true,
+        //    lineNumbers: true,
+        //    theme: 'yeti'
+        //});
+        //CodeMirror.fromTextArea(document.getElementById('jwtPayload'), {
+        //    readOnly: false,
+        //    lineNumbers: true,
+        //    theme: 'yeti'
+        //});
         this.generateJwt();
-
-
     },
+
 
     methods: {
         decode: function() {
@@ -97,6 +114,9 @@ new Vue({
         }
     }
 });
+
+
+
 
 
 
