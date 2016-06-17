@@ -56,21 +56,44 @@
             </p>
         </div>
 
-            <div class="row text-center">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <textarea name="jwt" rows="6" v-model="jwt.token" style="width:100%; font-size: 30px" v-on:keyup="decode" v-on:change="decode"></textarea>
+        <div class="container"> 
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">JWT String</h3>
+                        </div>
+                        <div class="panel-body">
+                            <textarea id="jwtInput" class="form-control" style="width:100%;height:150px;" placeholder="Paste JWT here"v-model="jwt.token"v-on:keyup="decode" v-on:change="decode"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row text-center">
-                <div class="col-sm-4 col-sm-offset-2">
-                    <h3>Header</h3>
-                    <textarea id="jwtHeader" rows="10" v-model="jwt.header" style="width:100%; font-size: 30px" disabled></textarea>
-                </div>
+
+            <div class="row">
                 <div class="col-sm-4">
-                    <h3>Payload</h3>
-                    <textarea id="jwtPayload" rows="10" v-model="jwt.payload" style="width:100%; font-size: 30px" v-on:keyup="encode"></textarea>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Header</h3>
+                      </div>
+                      <div class="panel-body">
+                        <textarea id="jwtHeader" rows="10" v-model="jwt.header" style="width:100%; font-size: 30px" disabled></textarea>
+                      </div>
+                    </div>
                 </div>
-            </div>
+
+                <div class="col-sm-8">
+                    <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Payload</h3>
+          </div>
+          <div class="panel-body">
+            <textarea id="jwtPayload" rows="10" v-model="jwt.payload" style="width:100%; font-size: 30px" v-on:keyup="encode"></textarea>
+          </div>
+        </div>
+    </div>
+
         <div class="row text-center">
             <div class="col-sm-8 col-sm-offset-2">
                 <h3>Signature (signing key)</h3>
@@ -101,24 +124,7 @@
 
         </p>
 </section>
-<section id="section-2" class="section-bg">
-    <div class="container feature">
-        <h2>What is a JWT?</h2>
-        <p class="text-center">
-            In its simplest form, a JWT has 3 distinct components which are base64 encoded for transport:
-        <div class="kelsey-special">
-            1. Header: contains the token metadata and the type of hashing algorithm used
-            <br/>
-            2. Payload: contains any information (claims) that you want signed
-            <br/>
-            3. Signature: headers and claims digitally signed using the algorithm specified in the header
-        </div>
-        </p>
-    </div>
-</section>
-<section id="section-3">
 
-</section>
 <footer>
     <div class="container">
         <div class="copyright">
