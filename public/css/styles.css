@@ -1498,3 +1498,44 @@ body.safari .safari {
 pre {
   font-size: 13px !important;
 }
+
+textarea.json-error-textarea {
+  background: rgba(200, 0, 0, 0.3);
+  color: #fcfcfc;
+}
+
+.json-error {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 50px;
+  background: rgba(200, 0, 0, 0.8);
+  text-align: center;
+  font-size: 20px;
+  color: #fcfcfc;
+  z-index: 500;
+  line-height: 50px;
+
+}
+
+.readme * {
+  visibility: visible !important;
+  text-align: left;
+  text-wrap: normal;
+}
+
+.readme h3,
+.readme p {
+  text-align:center;
+}
+
+.readme h1 {
+  color:black;
+}
+
+.readme div * {
+  text-align: left;
+}
+.readme h3 {
+  margin-top: 25px;
+}

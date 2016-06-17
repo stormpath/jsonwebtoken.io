@@ -1,9 +1,28 @@
 var uuid = require('uuid');
 var nJwt = require('njwt');
+var markdown = require( "markdown" ).markdown;
 
 var CodeMirror = require('codemirror');
 
 require('codemirror/mode/javascript/javascript.js');
+require('codemirror/mode/xml/xml.js');
+require('codemirror/mode/markdown/markdown.js');
+
+var libs = {
+    'jwtk-nJwt': {
+        'readme': 'https://raw.githubusercontent.com/jwtk/njwt/master/README.md',
+        'repo': 'https://github.com/jwtk/njwt'
+    },
+    'firebase-php-jwt': {
+        'readme': 'https://raw.githubusercontent.com/firebase/php-jwt/master/README.md',
+        'repo': 'https://github.com/firebase/php-jwt'
+    },
+    'jwtk-jjwt': {
+        'readme': 'https://raw.githubusercontent.com/jwtk/jjwt/master/README.md',
+        'repo': 'https://github.com/jwtk/jjwt'
+    },
+
+}
 
 var codeMirrorOptions = {
     readOnly: true,
@@ -24,12 +43,18 @@ new Vue({
             codeEncode: "",
             codeDecode: ""
         },
+        codeLibrary: {
+            readme: "",
+            href: ""
+        },
         jwtLibrary: "jwtk/nJwt",
         signature: "invalid",
         headerTextArea: "",
         payloadTextArea: "",
         decodeTextArea: "",
-        encodeTextArea: ""
+        encodeTextArea: "",
+        jsonError: false,
+        jsonErrorMessage: ""
 
     },
 
@@ -47,16 +72,22 @@ new Vue({
     },
 
     watch: {
-
+        "jwt.token": function(token) {
+            this.decode();
+        }
     },
 
     ready() {
+        var vm = this;
         this.headerTextArea = CodeMirror.fromTextArea(document.getElementById('jwtHeader'), {
             readOnly: true,
             lineNumbers: false,
             lineWrapping: true,
             mode: {
                 name: 'javascript', json: true
+            },
+            setSize: {
+                height: "50px"
             },
             theme: 'neo'
         });
@@ -90,6 +121,11 @@ new Vue({
             theme: 'neo'
         });
 
+        this.payloadTextArea.on("change", function(instance, obj) {
+           vm.jwt.payload = instance.getValue();
+            vm.encode();
+        });
+
         this.generateJwt();
     },
 
@@ -105,12 +141,14 @@ new Vue({
                 this.jwt.signature = 'VERIFIED!';
                 this.signature = 'verified';
                 this.generateCode();
+                this.verifyKey();
 
             } catch(err) {
-                console.error('==================');
-                console.error('Decode Error: ');
-                console.error(err);
-                console.error('==================');
+                this.jwt.header = JSON.stringify(err.parsedHeader, null, ' ');
+                this.headerTextArea.setValue(this.jwt.header);
+                this.jwt.payload = JSON.stringify(err.parsedBody, null, ' ');
+                this.payloadTextArea.setValue(this.jwt.payload);
+                this.signature = 'invalid';
             }
         },
 
@@ -118,13 +156,13 @@ new Vue({
             try {
                 var token = nJwt.create(JSON.parse(this.jwt.payload),this.jwt.key);
                 this.jwt.token = token.compact();
-
+                this.jsonError = false;
+                this.jsonErrorMessage = "";
                 this.generateCode();
+                this.verifyKey();
             } catch(err) {
-                console.error('==================');
-                console.error('Decode Error: ');
-                console.error(err);
-                console.error('==================');
+                this.jsonError = true;
+                this.jsonErrorMessage = err.toString();
             }
         },
 
@@ -142,7 +180,6 @@ new Vue({
                 console.error('==================');
             }
 
-            this.generateCode();
         },
 
 
@@ -159,15 +196,27 @@ new Vue({
                 this.jwtLibrary = jwtPackage;
             }
 
-            console.log(jwtPackage);
             this.jwt.codeEncode = 'Loading...';
             this.jwt.codeDecode = 'Loading...';
 
             this.$http.post('generatedCode', {jwt: this.jwt, jwtPackage: this.jwtLibrary}).then((response) => {
+
                 this.jwt.codeEncode = response.data.encode.replace(/&quot;/g, '"').replace(/&gt;/g, '>');
                 this.encodeTextArea.setValue(this.jwt.codeEncode);
+
                 this.jwt.codeDecode = response.data.decode.replace(/&quot;/g, '"').replace(/&gt;/g, '>');
                 this.decodeTextArea.setValue(this.jwt.codeDecode);
+
+
+            }, (response) => {
+                console.log(response);
+            });
+
+            this.$http.get(libs[this.jwtLibrary.replace('/','-')]['readme']).then((response) => {
+                this.codeLibrary.href = libs[this.jwtLibrary.replace('/','-')]['repo']
+                this.codeLibrary.readme = markdown.toHTML(response.data);
+                console.log(this.codeLibrary.readme);
+
             }, (response) => {
                 console.log(response);
             });

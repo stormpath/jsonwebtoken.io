@@ -28,7 +28,9 @@
 </head>
 <body>
 <div id="app">
-
+    <div class="json-error" v-if="jsonError">
+        @{{ jsonErrorMessage }}
+    </div>
     <header>
         <div class="container">
             <div class="logo">
@@ -71,7 +73,7 @@
                             <h3 class="panel-title">JWT String</h3>
                         </div>
                         <div class="panel-body">
-                            <textarea id="jwtInput" class="form-control" style="width:100%;height:150px;" placeholder="Paste JWT here"v-model="jwt.token"v-on:keyup="decode" v-on:change="decode"></textarea>
+                            <textarea id="jwtInput" class="form-control" v-bind:class="{ 'json-error-textarea': jsonError }" style="width:100%;height:150px;" placeholder="Paste JWT here" v-model="jwt.token" v-on:change="decode"></textarea>
                         </div>
                     </div>
                 </div>
@@ -86,7 +88,7 @@
                         <h3 class="panel-title">Header</h3>
                       </div>
                       <div class="panel-body">
-                        <textarea id="jwtHeader" rows="10" v-model="jwt.header" style="width:100%; font-size: 30px" disabled></textarea>
+                        <textarea id="jwtHeader" rows="5" v-model="jwt.header" style="width:100%; font-size: 30px" disabled></textarea>
                       </div>
                     </div>
                 </div>
@@ -97,7 +99,7 @@
                             <h3 class="panel-title">Payload</h3>
                         </div>
                         <div class="panel-body">
-                            <textarea id="jwtPayload" rows="10" v-model="jwt.payload" style="width:100%; font-size: 30px" v-on:keyup="encode"></textarea>
+                            <textarea id="jwtPayload" rows="5" v-model="jwt.payload" style="width:100%; font-size: 30px" v-on:keyup="encode"></textarea>
                         </div>
                     </div>
                 </div>
@@ -130,16 +132,31 @@
 <section id="section-1">
     <div class="container feature">
         <h2> Code for @{{ jwtLibrary }} </h2>
-        <p>
-            <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/nJwt')">jwtk/nJwt</span>
-            <span class="btn btn-sm btn-default" v-on:click="generateCode('firebase/php-jwt')">firebase/php-jwt</span>
-            <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/jjwt')">jwtk/jjwt</span>
+        <p class="description">
+            We have generated code samples based on the input above for different languages.  You can use this code to
+            copy and paste into your application for the following libraries. Please select the library you use to
+            switch the generated code samples.
+            <div class="row">
+                <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/nJwt')">jwtk/nJwt</span>
+                <span class="btn btn-sm btn-default" v-on:click="generateCode('firebase/php-jwt')">firebase/php-jwt</span>
+                <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/jjwt')">jwtk/jjwt</span>
+            </div>
             <div class="row code-block">
                 <div class="col-sm-6">
+                    <h3>Encode</h3>
                     <textarea  style="width:100%; font-size: 30px" rows="10" id="jwtCodeEncode" >@{{ jwt.codeEncode }}</textarea>
                 </div>
                 <div class="col-sm-6">
+                    <h3>Decode</h3>
                     <textarea style="width:100%; font-size: 30px" rows="10" id="jwtCodeDecode" >@{{ jwt.codeDecode }}</textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 readme">
+                    <h3>Readme</h3>
+                    <p><a href="@{{ codeLibrary.href }}"><i class="fa-github fa"></i> View Library On Github</a></p>
+                    <div>@{{{ codeLibrary.readme }}}</div>
                 </div>
             </div>
         </p>
@@ -165,7 +182,7 @@
     </div>
 </footer>
 </div>
-<script type="text/javascript" src="{{asset('/js/codemirror.js')}}"></script>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.8.0/vue-resource.js"></script>
 <script type="text/javascript" src="/js/home.js"></script>
@@ -177,12 +194,12 @@
 
         var h2 = document.querySelector('#' + sectionId + ' > .feature > h2');
         var p = document.querySelector('#' + sectionId + ' > .feature > p');
-        var devtools = document.querySelector('#' + sectionId + ' > .feature > p > div');
+//        var devtools = document.querySelector('#' + sectionId + ' > .feature > p > div');
 
         if (h2.className.indexOf('animated') === -1) {
             h2.className = h2.className + ' animated delay-200 ' + animation;
             p.className = p.className + ' animated delay-100 ' + animation;
-            devtools.className = devtools.className + ' animated ' + animation;
+//            devtools.className = devtools.className + ' animated ' + animation;
         }
     }
 
@@ -205,9 +222,6 @@
             setTimeout(animateSection.bind(null, 1), 100);
         }
 
-        if (document.body.scrollTop + window.innerHeight > 2200 || document.documentElement.scrollTop + window.innerHeight > 2200) {
-            setTimeout(animateSection.bind(null, 2), 100);
-        }
 
     }
 

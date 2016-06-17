@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::post('/generatedCode', function () {
     $request = Request::all();
 
+
+
     $package = str_replace('/','-',$request['jwtPackage']);
     $decode = View::make('code/'.$package.'/decode', compact('request'))->render();
     $encode = View::make('code/'.$package.'/encode', compact('request'))->render();
