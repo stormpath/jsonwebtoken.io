@@ -13,5 +13,16 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss')
-        .browserify('home.js');
+        .browserify('home.js')
+        .styles([
+            'codemirror/lib/codemirror.css',
+            'codemirror/theme/yeti.css',
+            'codemirror/theme/neo.css'
+        ],'public/css/codemirror.css','node_modules/')
+        .scripts([
+            'codemirror/lib/codemirror.js',
+            'codemirror/mode/javascript/javascript.js'
+        ], 'public/js/codemirror.js', 'node_modules/');
 });
+
+
