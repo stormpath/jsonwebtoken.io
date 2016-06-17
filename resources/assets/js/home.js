@@ -51,6 +51,15 @@ new Vue({
             readme: "",
             href: ""
         },
+        signupFields: {
+            fname: "",
+            lname: "",
+            email: "",
+            password: "",
+            status: false,
+            statusType: "",
+            successMessage: ""
+        },
         changedFromEncode: false,
         jwtLibrary: "jwtk/nJwt",
         signature: "invalid",
@@ -224,12 +233,47 @@ new Vue({
             this.$http.get(libs[this.jwtLibrary.replace('/','-')]['readme']).then((response) => {
                 this.codeLibrary.href = libs[this.jwtLibrary.replace('/','-')]['repo']
                 this.codeLibrary.readme = markdown.toHTML(response.data);
-                console.log(this.codeLibrary.readme);
 
             }, (response) => {
                 console.log(response);
             });
+        },
+
+        signup: function() {
+            this.signupFields.successMessage = "Please wait. Registering your account.";
+            this.signupFields.statusType = "registering";
+            this.signupFields.status = true;
+
+            var vm = this;
+
+            this.$http.post('/register', {data: this.signupFields}).then((response) => {
+
+            vm.signupFields.successMessage = "Please check your email to finish registration";
+            vm.signupFields.statusType = "success";
+            vm.signupFields.status = true;
+
+                setTimeout(function(){
+                    vm.signupFields.successMessage = "";
+                    vm.signupFields.statusType = "";
+                    vm.signupFields.status = false;
+                }, 8000);
+
+
+        }, (response) => {
+
+                vm.signupFields.successMessage = "There was an error during registration. Please visit Stormpath to finish registration";
+                vm.signupFields.statusType = "error";
+                vm.signupFields.status = true;
+
+                setTimeout(function(){
+                    vm.signupFields.successMessage = "";
+                    vm.signupFields.statusType = "";
+                    vm.signupFields.status = false;
+                }, 8000);
+            });
         }
+
+
     }
 });
 

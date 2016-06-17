@@ -25,12 +25,12 @@
     </div>
 
     <div class="title">
-        <h1>Decode or Encode JWTs</h1>
+        <h1>Encode or Decode JWTs</h1>
 
         <p class="description">
             Paste a JWT and decode its header, payload, and signature,
             <br/>
-            or provide header, payload, and signature information to generate a JWT.
+            or provide header, payload, and signature information to generate a JWT
         </p>
     </div>
 </div>

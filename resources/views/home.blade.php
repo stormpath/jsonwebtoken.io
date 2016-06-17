@@ -28,7 +28,11 @@
 </head>
 <body>
 <div class="headerColor"></div>
+
 <div id="app" >
+    <div class="json-@{{ signupFields.statusType }}" v-if="signupFields.status">
+        @{{ signupFields.successMessage }}
+    </div>
     <header>
 
         @include('_partials/nav')
@@ -103,14 +107,13 @@
     <div class="container feature">
         <h2> Code for @{{ jwtLibrary }} </h2>
         <p class="description">
-            We have generated code samples based on the input above for different languages.  You can use this code to
-            copy and paste into your application for the following libraries. Please select the library you use to
-            switch the generated code samples.
-            <div class="row">
-                <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/nJwt')">jwtk/nJwt</span>
-                <span class="btn btn-sm btn-default" v-on:click="generateCode('firebase/php-jwt')">firebase/php-jwt</span>
-                <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/jjwt')">jwtk/jjwt</span>
-                <span class="btn btn-sm btn-default" v-on:click="generateCode('jwt-dotnet/jwt')">jwt-dotnet/jwt</span>
+            We have generated code samples based on the input above for different languages.  <br/>
+            Select the library you use to switch the generated code samples, copy and paste, and that is all.
+            <div class="row libraryButtons">
+                <span class="btn btn-sm btn-default" v-bind:class="{ 'active': jwtLibrary=='jwtk/nJwt'}" v-on:click="generateCode('jwtk/nJwt')">jwtk/nJwt</span>
+                <span class="btn btn-sm btn-default" v-bind:class="{ 'active': jwtLibrary=='firebase/php-jwt'}" v-on:click="generateCode('firebase/php-jwt')">firebase/php-jwt</span>
+                <span class="btn btn-sm btn-default" v-bind:class="{ 'active': jwtLibrary=='jwtk/jjwt'}" v-on:click="generateCode('jwtk/jjwt')">jwtk/jjwt</span>
+                <span class="btn btn-sm btn-default" v-bind:class="{ 'active': jwtLibrary=='jwt-dotnet/jwt'}" v-on:click="generateCode('jwt-dotnet/jwt')">jwt-dotnet/jwt</span>
             </div>
             <div class="row code-block">
                 <div class="col-sm-6">
@@ -127,7 +130,44 @@
         </p>
     </div>
 </section>
+    <section class="signup-bar">
+        <div class="container">
+            <div class="row"><h2>Sign Up for Stormpath</h2></div>
+            <div class="row">
 
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="sr-only">First Name</label>
+                        <input type="text" class="form-control" placeholder="First Name" v-model="signupFields.fname">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="sr-only">Last Name</label>
+                        <input type="text" class="form-control" placeholder="Last Name" v-model="signupFields.lname">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="sr-only">Email address</label>
+                        <input type="email" class="form-control" placeholder="Email" v-model="signupFields.email">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="sr-only">Password</label>
+                        <input type="password" class="form-control" placeholder="password" v-model="signupFields.password">
+                    </div>
+                </div>
+
+                <div class="col-xs-1">
+                    <div v-on:click="signup" class="btn btn-default btn-lg">Sign Up For Free</div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
 <section id="section-2" class="section-bg">
     <div class="container feature">
         <h2>Readme</h2>

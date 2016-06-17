@@ -47,15 +47,50 @@ footer {
   background-image: -ms-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, .26)), -ms-linear-gradient(108deg, rgba(51, 134, 255, 0.9), rgba(0, 31, 76, 0.9) 90%);
 
 }
-headerold {
+.signup-bar {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  padding-bottom: 50px;
+  min-width:100%;
+  min-height:100px;
   background-image: -webkit-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, .26)), -webkit-linear-gradient(108deg, rgba(51, 134, 255, 0.9), rgba(0, 31, 76, 0.9) 90%);
   background-image: -moz-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, .26)), -moz-linear-gradient(108deg, rgba(51, 134, 255, 0.9), rgba(0, 31, 76, 0.9) 90%);
   background-image: -o-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, .26)), -o-linear-gradient(108deg, rgba(51, 134, 255, 0.9), rgba(0, 31, 76, 0.9) 90%);
   background-image: -ms-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, .26)), -ms-linear-gradient(108deg, rgba(51, 134, 255, 0.9), rgba(0, 31, 76, 0.9) 90%);
+  padding: 30px 0px 15px;
 }
+
+.signup-bar .details {
+  text-align:left;
+}
+
+.signup-bar h2 {
+  padding-bottom: 25px;
+  font-size: 30px;
+  color: #fafafa;
+  text-shadow: 1px 1px black;
+  font-weight: 500;
+  margin-top: 0px;
+}
+
+.signup-bar .btn,
+.signup-bar .btn:hover,
+.signup-bar .btn:active,
+.signup-bar .btn:focus {
+  font-size: 25px;
+  background: none;
+  color: #fafafa;
+  border: 3px solid #fafafa;
+  box-shadow: 0px 0px;
+  border-radius: 8px;
+}
+.signup-bar p {
+  color:#fafafa;
+}
+
+.signup-bar .container {
+  text-align: center;
+}
+
 header > .container > .title {
   text-align: center;
   margin-bottom:35px;
@@ -1530,6 +1565,34 @@ textarea.json-error-textarea {
 
 }
 
+.json-success {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 50px;
+  background: rgba(0, 200, 0, 0.8) !important;
+  text-align: center;
+  font-size: 20px;
+  color: #fcfcfc;
+  z-index: 500;
+  line-height: 50px;
+
+}
+
+.json-registering {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 50px;
+  background: rgba(200, 200, 0, 0.8) !important;
+  text-align: center;
+  font-size: 20px;
+  color: #fcfcfc;
+  z-index: 500;
+  line-height: 50px;
+
+}
+
 .readme, .readme * {
   visibility: visible !important;
   text-align: left;
@@ -1565,6 +1628,10 @@ textarea.json-error-textarea {
 #section-1 h2,
 #section-2 h2{
   font-size: 40px;
+}
+
+#section-1 {
+  padding-top:50px;
 }
 
 #section-2 {
@@ -1642,4 +1709,34 @@ textarea.json-error-textarea {
 
 ul {
   font-size: 16px;
+}
+
+#section-1 .libraryButtons span {
+  margin: 5px;
+  color: rgba(0, 31, 76, 0.9);
+}
+
+#section-1 .libraryButtons span.active {
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.07);
+  background-color: rgba(255, 255, 255, 1);
+  outline: none;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 67px;
+  padding: 6px 12px;
+  font-size: 15px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
