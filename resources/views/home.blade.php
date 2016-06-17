@@ -27,6 +27,7 @@
 
 </head>
 <body>
+<div class="headerColor"></div>
 <div id="app">
     <div class="json-error" v-if="jsonError">
         @{{ jsonErrorMessage }}
@@ -99,7 +100,7 @@
                             <h3 class="panel-title">Payload</h3>
                         </div>
                         <div class="panel-body">
-                            <textarea id="jwtPayload" rows="5" v-model="jwt.payload" style="width:100%; font-size: 30px" v-on:keyup="encode"></textarea>
+                            <textarea id="jwtPayload" rows="5" v-model="jwt.payload" style="width:100%; font-size: 30px" v-on:keyup="encode" debounce=500></textarea>
                         </div>
                     </div>
                 </div>
