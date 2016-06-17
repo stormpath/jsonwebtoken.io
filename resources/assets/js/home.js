@@ -21,6 +21,10 @@ var libs = {
         'readme': 'https://raw.githubusercontent.com/jwtk/jjwt/master/README.md',
         'repo': 'https://github.com/jwtk/jjwt'
     },
+    'jwt-dotnet-jwt': {
+        'readme': 'https://raw.githubusercontent.com/jwt-dotnet/jwt/master/README.md',
+        'repo': 'https://github.com/jwt-dotnet/jwt'
+    }
 
 }
 
@@ -113,7 +117,7 @@ new Vue({
             mode: {
                 name: 'javascript', json: true
             },
-            theme: 'neo'
+            theme: 'mdn-like'
         });
 
         this.decodeTextArea = CodeMirror.fromTextArea(document.getElementById('jwtCodeDecode'), {
@@ -123,7 +127,7 @@ new Vue({
             mode: {
                 name: 'javascript', json: true
             },
-            theme: 'neo'
+            theme: 'mdn-like'
         });
 
         this.payloadTextArea.on("change", function(instance, obj) {
@@ -167,6 +171,7 @@ new Vue({
                 this.generateCode();
                 this.verifyKey();
             } catch(err) {
+                this.jwt.token = '';
                 this.jsonError = true;
                 this.jsonErrorMessage = err.toString();
             }
@@ -199,7 +204,9 @@ new Vue({
             }
 
             this.jwt.codeEncode = 'Loading...';
+            this.encodeTextArea.setValue(this.jwt.codeEncode);
             this.jwt.codeDecode = 'Loading...';
+            this.decodeTextArea.setValue(this.jwt.codeDecode);
 
             this.$http.post('generatedCode', {jwt: this.jwt, jwtPackage: this.jwtLibrary}).then((response) => {
 

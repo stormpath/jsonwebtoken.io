@@ -17,7 +17,8 @@ elixir(function(mix) {
         .styles([
             'codemirror/lib/codemirror.css',
             'codemirror/theme/yeti.css',
-            'codemirror/theme/neo.css'
+            'codemirror/theme/neo.css',
+            'codemirror/theme/mdn-like.css'
         ],'public/css/codemirror.css','node_modules/')
         .scripts([
             'codemirror/lib/codemirror.js',

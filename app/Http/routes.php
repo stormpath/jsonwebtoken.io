@@ -32,3 +32,8 @@ Route::post('/generatedCode', function () {
         'decode' => $decode
     ];
 });
+
+
+Route::get('jwt101', function() {
+    return view('101');
+});

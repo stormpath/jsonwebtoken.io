@@ -28,7 +28,7 @@ footer {
 
 .container {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1325px;
   text-align: left;
   position: relative;
 }
@@ -40,7 +40,7 @@ footer {
   top:0;
   left:0;
   min-width:100%;
-  min-height:98%;
+  min-height:500px;
   background-image: -webkit-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, .26)), -webkit-linear-gradient(108deg, rgba(51, 134, 255, 0.9), rgba(0, 31, 76, 0.9) 90%);
   background-image: -moz-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, .26)), -moz-linear-gradient(108deg, rgba(51, 134, 255, 0.9), rgba(0, 31, 76, 0.9) 90%);
   background-image: -o-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, .26)), -o-linear-gradient(108deg, rgba(51, 134, 255, 0.9), rgba(0, 31, 76, 0.9) 90%);
@@ -58,7 +58,7 @@ headerold {
 }
 header > .container > .title {
   text-align: center;
-  margin-bottom:15px;
+  margin-bottom:35px;
 }
 header p.description {
   width: 730px;
@@ -93,12 +93,10 @@ header .devtools-shadow::before {
 }
 
 section {
-  padding-bottom: 100px;
   padding-top: 100px;
   border-top: 1px solid #f0f0f0;
 }
 header + section {
-  padding-top: 200px;
   border-top: none;
 }
 header + section .container {
@@ -108,7 +106,7 @@ header + section + section {
   border-top: none;
 }
 section.section-bg {
-  background: #F8FAFD;
+  background: #f8fafd;
 }
 
 footer {
@@ -1507,6 +1505,7 @@ body.safari .safari {
 }
 .code-block {
   text-align:left;
+  margin-top: 30px;
 }
 
 pre {
@@ -1514,8 +1513,7 @@ pre {
 }
 
 textarea.json-error-textarea {
-  background: rgba(200, 0, 0, 0.3);
-  color: #fcfcfc;
+
 }
 
 .json-error {
@@ -1523,7 +1521,7 @@ textarea.json-error-textarea {
   top: 0;
   width: 100%;
   min-height: 50px;
-  background: rgba(200, 0, 0, 0.8);
+  background: rgba(200, 0, 0, 0.8) !important;
   text-align: center;
   font-size: 20px;
   color: #fcfcfc;
@@ -1532,14 +1530,13 @@ textarea.json-error-textarea {
 
 }
 
-.readme * {
+.readme, .readme * {
   visibility: visible !important;
   text-align: left;
   text-wrap: normal;
 }
 
-.readme h3,
-.readme p {
+.readme h2{
   text-align:center;
 }
 
@@ -1551,6 +1548,98 @@ textarea.json-error-textarea {
 .readme div * {
   text-align: left;
 }
-.readme h3 {
+.readme h2 {
   margin-top: 25px;
+}
+
+.panel-default>.panel-heading {
+  color: #333;
+  background-color: #e4e6eb;
+  border-color: #ddd;
+}
+
+.panel-title span {
+  margin-left: 10px;
+}
+
+#section-1 h2,
+#section-2 h2{
+  font-size: 40px;
+}
+
+#section-2 {
+  padding-top: 50px;
+}
+
+.well {
+  background: #f8fafd;
+}
+
+
+.cm-s-mdn-like .CodeMirror-gutters {
+  background: #f8fafd;
+  border-left: 6px solid #f8fafd;
+  color: #333;
+}
+
+.CodeMirror-gutters {
+  border-right: 1px solid #ddd;
+  background-color: #f8fafd;
+  white-space: nowrap;
+}
+
+.btn {
+  background-color: #f8fafd;
+}
+
+.dropdown{
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dropdown a:visited,
+.dropdown a:hover,
+.dropdown a:active,
+.dropdown a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  color: #000000;
+  font-size: 12px;
+}
+
+.dropdownlisttext {
+  padding-left: 20px;
+  color: #000000;
+  font-size: 11px;
+}
+
+.toplink {
+  top: 25px;
+  width: 100%;
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: -40px;
+}
+
+
+.btn-link, .btn-link:focus {
+  color: rgba(255,255,255,0.8);
+  background: none;
+  border: none;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.btn-link:hover, .btn-link:active {
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.3);
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+}
+
+ul {
+  font-size: 16px;
 }

@@ -16,6 +16,10 @@ $builder = "Jwts.builder()\n";
 $claims = '';
 
 foreach($jwt as $claim => $value) {
+    if(is_array($value)) {
+        $claims .= ".claim(\"$claim\", {$claim}Map)\n";
+        continue;
+    }
     if(key_exists($claim, $standardClaims)) {
         $builder .= ".$standardClaims[$claim](".$value.")\n";
     } else {

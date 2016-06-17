@@ -21,57 +21,26 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Francois+One">
 
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/styles.css">
 
 
 </head>
 <body>
 <div class="headerColor"></div>
-<div id="app">
-    <div class="json-error" v-if="jsonError">
-        @{{ jsonErrorMessage }}
-    </div>
+<div id="app" >
     <header>
-        <div class="container">
-            <div class="logo">
-                <div class="icon">
-                    <a href="/" class="text">JSON Web Token</a>
-                </div>
-                <div class="credits">
-                    by
-                    <a href="https://stormpath.com/" target="_blank">
-                        <img src="img/stormpath-logo-white.png">
-                    </a>
-                </div>
-            </div>
 
-            <div class="share">
-                <a href="https://twitter.com/intent/tweet?text=Easily%20decode,%20encode,%20and%20validate%20your%20JWTs%20https%3A%2F%2Fjsonwebtoken.io%20%23jwt" target="_blank" rel="nofollow" class="btn btn-share">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                    Share on Twitter
-                </a>
-            </div>
+        @include('_partials/nav')
 
-            <div class="title">
-                <h1>Decode or Encode JWTs</h1>
-
-                <p class="description">
-                    Paste a JWT and decode its header, payload, and signature,
-                    <br/>
-                    or provide header, payload, and signature information to generate a JWT.
-                </p>
-            </div>
-        </div>
-
-        <div class="container"> 
+        <div class="container  well well-lg">
 
             <div class="row">
 
                 <div class="col-sm-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">JWT String</h3>
+                            <h3 class="panel-title">JWT String  <span class="label label-danger" v-show="jsonErrorMessage">@{{ jsonErrorMessage }}</span></h3>
                         </div>
                         <div class="panel-body">
                             <textarea id="jwtInput" class="form-control" v-bind:class="{ 'json-error-textarea': jsonError }" style="width:100%;height:150px;" placeholder="Paste JWT here" v-model="jwt.token" v-on:change="decode"></textarea>
@@ -141,6 +110,7 @@
                 <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/nJwt')">jwtk/nJwt</span>
                 <span class="btn btn-sm btn-default" v-on:click="generateCode('firebase/php-jwt')">firebase/php-jwt</span>
                 <span class="btn btn-sm btn-default" v-on:click="generateCode('jwtk/jjwt')">jwtk/jjwt</span>
+                <span class="btn btn-sm btn-default" v-on:click="generateCode('jwt-dotnet/jwt')">jwt-dotnet/jwt</span>
             </div>
             <div class="row code-block">
                 <div class="col-sm-6">
@@ -153,40 +123,24 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-12 readme">
-                    <h3>Readme</h3>
-                    <p><a href="@{{ codeLibrary.href }}"><i class="fa-github fa"></i> View Library On Github</a></p>
-                    <div>@{{{ codeLibrary.readme }}}</div>
-                </div>
-            </div>
+
         </p>
     </div>
 </section>
 
-<footer>
-    <div class="container">
-        <div class="copyright">
-            &copy; 2016 Stormpath
-        </div>
-        <div class="social">
-            <a href="https://github.com/kelseychayes/jsonwebtoken" target="_blank" rel="nofollow" class="btn btn-alt">
-                <i class="fa fa-github" aria-hidden="true"></i>
-                Have a Suggestion?
-            </a>
-        </div>
-        <div class="love">
-            <a href="https://stormpath.com" target="_blank">
-                <span>Made with</span><i class="fa fa-heart heart" aria-hidden="true"></i><span>by Stormpath</span>
-            </a>
-        </div>
-    </div>
-</footer>
-</div>
+<section id="section-2" class="section-bg">
+    <div class="container feature">
+        <h2>Readme</h2>
+        <p class="description">
+            <a href="@{{ codeLibrary.href }}" target="_blank"><i class="fa-github fa"></i> View Library On Github</a>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.8.0/vue-resource.js"></script>
-<script type="text/javascript" src="/js/home.js"></script>
+            <div class="readme">@{{{ codeLibrary.readme }}}</div>
+        </p>
+    </div>
+</section>
+
+
+@include('_partials/footer')
 
 <script>
     function animateSection(nr) {
@@ -219,8 +173,12 @@
             }
         }
 
-        if (document.body.scrollTop + window.innerHeight > 1500 || document.documentElement.scrollTop + window.innerHeight > 1500) {
+        if (document.body.scrollTop + window.innerHeight > 1000 || document.documentElement.scrollTop + window.innerHeight > 1000) {
             setTimeout(animateSection.bind(null, 1), 100);
+        }
+
+        if (document.body.scrollTop + window.innerHeight > 1500 || document.documentElement.scrollTop + window.innerHeight > 1500) {
+            setTimeout(animateSection.bind(null, 2), 100);
         }
 
 
