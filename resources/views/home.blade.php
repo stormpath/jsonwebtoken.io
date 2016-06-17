@@ -11,8 +11,8 @@
     <meta property="og:description" content="With JSONwebtoken.io, you can easily encode, decode, and validate JWTs.">
     <meta property="og:image" content="http://www.jwtinspector.io/img/screenshots/jwt-inspector-promo-large.png">
     <meta property="og:image:secure_url" content="https://www.jwtinspector.io/img/screenshots/jwt-inspector-promo-large.png">
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/henclmbnehmcpbjgipaajbggekefngob">
     <link rel="shortcut icon" type="image/png" href="img/icons/icon-32.png">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -74,7 +74,9 @@
         <div class="row text-center">
             <div class="col-sm-8 col-sm-offset-2">
                 <h3>Signature (signing key)</h3>
-                <input name="jwtKey" v-model="jwt.key" v-on:keyup="verifyKey" style="width:100%; font-size: 30px"/>
+                <div class="form-group">
+                    <input name="jwtKey" class="form-control" v-model="jwt.key" v-on:keyup="verifyKey" style="width:100%; font-size: 30px"/>
+                </div>
                 <span> @{{ jwt.signature }}</span>
             </div>
         </div>
