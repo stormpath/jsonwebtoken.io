@@ -1545,6 +1545,7 @@ textarea.json-error-textarea {
 
 .readme h1 {
   color:black;
+  padding-top:15px;
 }
 
 .readme div * {

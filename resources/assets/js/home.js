@@ -47,6 +47,7 @@ new Vue({
             readme: "",
             href: ""
         },
+        changedFromEncode: false,
         jwtLibrary: "jwtk/nJwt",
         signature: "invalid",
         headerTextArea: "",
@@ -73,6 +74,10 @@ new Vue({
 
     watch: {
         "jwt.token": function(token) {
+            if(this.changedFromEncode) {
+                this.changedFromEncode = false;
+                return;
+            }
             this.decode();
         }
     },
@@ -153,6 +158,7 @@ new Vue({
         },
 
         encode: function() {
+            this.changedFromEncode = true;
             try {
                 var token = nJwt.create(JSON.parse(this.jwt.payload),this.jwt.key);
                 this.jwt.token = token.compact();
@@ -174,10 +180,6 @@ new Vue({
             } catch(err) {
                 this.jwt.signature = err.userMessage;
                 this.signature = 'invalid';
-                console.error('==================');
-                console.error('Decode Error: ');
-                console.error(err);
-                console.error('==================');
             }
 
         },
