@@ -1,6 +1,6 @@
 var uuid = require('uuid');
 var nJwt = require('njwt');
-var markdown = require( "markdown" ).markdown;
+var marked = require('marked');
 
 var CodeMirror = require('codemirror');
 
@@ -33,6 +33,20 @@ var codeMirrorOptions = {
     lineNumbers: true,
     theme: 'yeti'
 };
+
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false,
+    highlight: function (code) {
+        return require('highlight.js').highlightAuto(code).value;
+    }
+});
 
 new Vue({
     el: '#app',
@@ -232,7 +246,7 @@ new Vue({
 
             this.$http.get(libs[this.jwtLibrary.replace('/','-')]['readme']).then((response) => {
                 this.codeLibrary.href = libs[this.jwtLibrary.replace('/','-')]['repo']
-                this.codeLibrary.readme = markdown.toHTML(response.data);
+                this.codeLibrary.readme = marked(response.data);
 
             }, (response) => {
                 console.log(response);

@@ -20,6 +20,9 @@ elixir(function(mix) {
             'codemirror/theme/neo.css',
             'codemirror/theme/mdn-like.css'
         ],'public/css/codemirror.css','node_modules/')
+        .styles([
+            'github-markdown-css/github-markdown.css'
+        ],'public/css/markdown.css', 'node_modules/')
         .scripts([
             'codemirror/lib/codemirror.js',
             'codemirror/mode/javascript/javascript.js'

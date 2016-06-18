@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace JWT\Jobs;
 
 use Illuminate\Bus\Queueable;
 

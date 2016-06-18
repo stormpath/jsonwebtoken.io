@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace JWT\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

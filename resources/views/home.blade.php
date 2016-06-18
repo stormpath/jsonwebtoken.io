@@ -22,6 +22,7 @@
 
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/markdown.css">
     <link rel="stylesheet" href="css/styles.css">
 
 
@@ -169,7 +170,7 @@
 
     </section>
 <section id="section-2" class="section-bg">
-    <div class="container feature">
+    <div class="container feature markdown-body">
         <h2>Readme</h2>
         <p class="description">
             <a href="@{{ codeLibrary.href }}" target="_blank"><i class="fa-github fa"></i> View Library On Github</a>

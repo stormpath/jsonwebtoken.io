@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace JWT\Events;
 
 abstract class Event
 {
