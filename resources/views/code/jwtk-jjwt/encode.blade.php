@@ -16,10 +16,7 @@ $builder = "Jwts.builder()\n";
 $claims = '';
 
 foreach($jwt as $claim => $value) {
-    if(is_array($value)) {
-        $claims .= "\t.claim(\"$claim\", {$claim}Map)\n";
-        continue;
-    }
+
     if(key_exists($claim, $standardClaims)) {
         if($claim == 'sub' || $claim == 'jti') {
             $builder .= "\t.$standardClaims[$claim](\"".$value."\")\n";
@@ -30,8 +27,22 @@ foreach($jwt as $claim => $value) {
             $builder .= "\t.$standardClaims[$claim](Date.from(Instant.ofEpochSecond(".$value.")))\n";
             continue;
         }
+
+
         $builder .= "\t.$standardClaims[$claim](".$value.")\n";
+    }
+
+    if(is_array($value)) {
+        $claims .= "\t.claim(\"$claim\", {$claim}Map)\n";
+        continue;
     } else {
+
+        if(is_bool($value)) {
+            $value = $value == true ? "true" : "false";
+            $claims .= "\t.claim(\"$claim\", ".$value.")\n";
+            continue;
+        }
+
         $claims .= "\t.claim(\"$claim\", \"$value\")\n";
     }
 }
