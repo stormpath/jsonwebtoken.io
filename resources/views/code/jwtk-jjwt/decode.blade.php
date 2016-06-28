@@ -1,3 +1,9 @@
+<?php
+$builder = "Jwts.parser()\n";
+$builder .= "\t.setSigningKey(\"".$request['jwt']['key']."\".getBytes(\"UTF-8\"))\n";
+$builder .= "\t.parseClaimsJws(\"\n".$request['jwt']['token']."\n\t\");\n";
+?>
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
@@ -5,9 +11,7 @@ import java.security.Key;
 
 try {
 
-Jwts.parser()
-.setSigningKey({{$request['jwt']['key']}})
-.parseClaimsJws({{$request['jwt']['token']}});
+{{ $builder }}
 
 //OK, we can trust this JWT
 

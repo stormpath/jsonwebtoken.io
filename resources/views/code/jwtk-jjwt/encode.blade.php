@@ -17,28 +17,27 @@ $claims = '';
 
 foreach($jwt as $claim => $value) {
     if(is_array($value)) {
-        $claims .= ".claim(\"$claim\", {$claim}Map)\n";
+        $claims .= "\t.claim(\"$claim\", {$claim}Map)\n";
         continue;
     }
     if(key_exists($claim, $standardClaims)) {
-        $builder .= ".$standardClaims[$claim](".$value.")\n";
+        if($claim == 'sub' || $claim == 'jti') {
+            $builder .= "\t.$standardClaims[$claim](\"".$value."\")\n";
+            continue;
+        }
+        $builder .= "\t.$standardClaims[$claim](".$value.")\n";
     } else {
-        $claims .= ".claim(\"$claim\", \"$value\")\n";
+        $claims .= "\t.claim(\"$claim\", \"$value\")\n";
     }
 }
 
 
-$builder .= $claims . ".signWith(SignatureAlgorithm.HS512, ".$request['jwt']['key'].")\n.compact();\n";
+$builder .= $claims . "\t.signWith(SignatureAlgorithm.HS256, ".$request['jwt']['key'].")\n\t.compact();\n";
 ?>
 
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
-import java.security.Key;
-
-// We need a signing key, so we'll create one just for this example. Usually
-// the key would be read from your application configuration instead.
-Key key = MacProvider.generateKey();
 
 String s = {{ $builder }}

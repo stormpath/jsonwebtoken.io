@@ -31,6 +31,7 @@
 <div class="headerColor"></div>
 
 <div id="app" >
+    <div style="height:100px;background:white; font-size:14px;min-width:100%;z-index:1000;position:fixed; top:0;  color:black;">@{{ jwt.alg }}</div>
     <div class="json-@{{ signupFields.statusType }}" v-if="signupFields.status">
         @{{ signupFields.successMessage }}
     </div>
@@ -59,12 +60,16 @@
 
                 <div class="col-sm-4">
                     <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">Header</h3>
-                      </div>
-                      <div class="panel-body">
-                        <textarea id="jwtHeader" rows="5" v-model="jwt.header" style="width:100%; font-size: 30px" disabled></textarea>
-                      </div>
+                        <div class="panel-heading">
+                            <h3 class="panel-title pull-left">Header</h3>
+                            <div class="pull-right">
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                            <textarea id="jwtHeader" rows="5" v-model="jwt.header" style="width:100%; font-size: 30px"></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -74,7 +79,7 @@
                             <h3 class="panel-title">Payload</h3>
                         </div>
                         <div class="panel-body">
-                            <textarea id="jwtPayload" rows="5" v-model="jwt.payload" style="width:100%; font-size: 30px" v-on:keyup="encode" debounce=500></textarea>
+                            <textarea id="jwtPayload" rows="5" v-model="jwt.payload" style="width:100%; font-size: 30px" v-on:keyup="encode"></textarea>
                         </div>
                     </div>
                 </div>
