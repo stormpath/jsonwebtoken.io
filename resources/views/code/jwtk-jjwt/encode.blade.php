@@ -8,7 +8,7 @@ $standardClaims = [
         'aud' => 'setAudience',
         'exp' => 'setExpiration',
         'nbf' => 'setNotBefore',
-        'iat' => 'issuedAt',
+        'iat' => 'setIssuedAt',
         'jti' => 'setId'
     ];
 
@@ -23,6 +23,11 @@ foreach($jwt as $claim => $value) {
     if(key_exists($claim, $standardClaims)) {
         if($claim == 'sub' || $claim == 'jti') {
             $builder .= "\t.$standardClaims[$claim](\"".$value."\")\n";
+            continue;
+        }
+
+        if(in_array($claim, ['nbf', 'iat', 'exp'])) {
+            $builder .= "\t.$standardClaims[$claim](Date.from(Instant.ofEpochSecond(".$value.")))\n";
             continue;
         }
         $builder .= "\t.$standardClaims[$claim](".$value.")\n";
