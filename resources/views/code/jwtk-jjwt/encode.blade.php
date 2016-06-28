@@ -32,7 +32,7 @@ foreach($jwt as $claim => $value) {
 }
 
 
-$builder .= $claims . "\t.signWith(SignatureAlgorithm.HS256, ".$request['jwt']['key'].")\n\t.compact();\n";
+$builder .= $claims . "\t.signWith(SignatureAlgorithm.HS256, \"".$request['jwt']['key']."\".getBytes(\"UTF-8\"))\n\t.compact();\n";
 ?>
 
 
