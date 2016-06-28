@@ -48910,7 +48910,7 @@ new Vue({
         },
 
         generateJwt: function generateJwt() {
-            var jwt = nJwt.create(JSON.parse("{\"sub\": 1234567890, \"name\":\"John Doe\", \"admin\":true}"), this.jwt.key);
+            var jwt = nJwt.create(JSON.parse("{\"sub\": \"1234567890\", \"name\":\"John Doe\", \"admin\":true}"), this.jwt.key);
             this.jwt.token = jwt.compact();
             this.decode();
         },

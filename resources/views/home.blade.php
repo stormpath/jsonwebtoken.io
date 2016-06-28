@@ -31,7 +31,7 @@
 <div class="headerColor"></div>
 
 <div id="app" >
-    <div style="height:100px;background:white; font-size:14px;min-width:100%;z-index:1000;position:fixed; top:0;  color:black;">@{{ jwt.alg }}</div>
+    <div style="display:none;height:100px;background:white; font-size:14px;min-width:100%;z-index:1000;position:fixed; top:0;  color:black;">@{{ jwt.alg }}</div>
     <div class="json-@{{ signupFields.statusType }}" v-if="signupFields.status">
         @{{ signupFields.successMessage }}
     </div>
