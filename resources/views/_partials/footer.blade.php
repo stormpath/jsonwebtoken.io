@@ -7,7 +7,7 @@
             &copy; 2016 Stormpath
         </div>
         <div class="social">
-            <a href="https://github.com/kelseychayes/jsonwebtoken" target="_blank" rel="nofollow" class="btn btn-alt">
+            <a href="https://github.com/stormpath/jsonwebtoken.io/issues" target="_blank" rel="nofollow" class="btn btn-alt">
                 <i class="fa fa-github" aria-hidden="true"></i>
                 Have a Suggestion?
             </a>
