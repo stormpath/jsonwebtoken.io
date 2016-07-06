@@ -9,8 +9,8 @@
 
     <meta property="og:title" content="Gain control over your JWTs">
     <meta property="og:description" content="With JSONwebtoken.io, you can easily encode, decode, and validate JWTs.">
-    <meta property="og:image" content="http://www.jwtinspector.io/img/screenshots/jwt-inspector-promo-large.png">
-    <meta property="og:image:secure_url" content="https://www.jwtinspector.io/img/screenshots/jwt-inspector-promo-large.png">
+    <meta property="og:image" content="https://www.jsonwebtoken.io/img/promo-large.png">
+    <meta property="og:image:secure_url" content="https://www.jsonwebtoken.io/img/promo-large.png">
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="img/icons/icon-32.png">

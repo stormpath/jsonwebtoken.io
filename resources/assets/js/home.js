@@ -186,6 +186,12 @@ new Vue({
 
         encode: function() {
             this.changedFromEncode = true;
+
+            if(this.validateValues() == false) {
+                this.jwt.token = '';
+                this.jsonError = true;
+                this.jsonErrorMessage = "Some Values are invalid.";
+            }
             try {
                 var token = nJwt.create(JSON.parse(this.jwt.payload),this.jwt.key);
                 this.jwt.token = token.compact();
@@ -198,6 +204,10 @@ new Vue({
                 this.jsonError = true;
                 this.jsonErrorMessage = err.toString();
             }
+        },
+
+        validateValues: function() {
+            return false;
         },
 
         verifyKey: function() {

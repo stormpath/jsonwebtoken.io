@@ -11,11 +11,11 @@ import java.security.Key;
 
 try {
 
-{{ $builder }}
+    {{ $builder }}
 
-//OK, we can trust this JWT
+    //OK, we can trust this JWT
 
 } catch (SignatureException e) {
 
-//don't trust the JWT!
+    //don't trust the JWT!
 }
