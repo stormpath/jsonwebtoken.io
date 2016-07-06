@@ -9,8 +9,8 @@
 
     <meta property="og:title" content="Gain control over your JWTs">
     <meta property="og:description" content="With JSONwebtoken.io, you can easily encode, decode, and validate JWTs.">
-    <meta property="og:image" content="https://www.jsonwebtoken.io/img/promo-large.png">
-    <meta property="og:image:secure_url" content="https://www.jsonwebtoken.io/img/promo-large.png">
+    <meta property="og:image" content="https://www.jsonwebtoken.io/img/screenshots/promo-large.png">
+    <meta property="og:image:secure_url" content="https://www.jsonwebtoken.io/img/screenshots/promo-large.png">
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="img/icons/icon-32.png">
@@ -31,7 +31,6 @@
 <div class="headerColor"></div>
 
 <div id="app" >
-    <div style="height:100px;background:white; font-size:14px;min-width:100%;z-index:1000;position:fixed; top:0;  color:black;">@{{ jwt.alg }}</div>
     <div class="json-@{{ signupFields.statusType }}" v-if="signupFields.status">
         @{{ signupFields.successMessage }}
     </div>
