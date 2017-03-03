@@ -135,44 +135,7 @@
         </p>
     </div>
 </section>
-    <section class="signup-bar">
-        <div class="container">
-            <div class="row"><h2>Sign Up for Stormpath</h2></div>
-            <div class="row">
 
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label class="sr-only">First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name" v-model="signupFields.fname">
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label class="sr-only">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" v-model="signupFields.lname">
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label class="sr-only">Email address</label>
-                        <input type="email" class="form-control" placeholder="Email" v-model="signupFields.email">
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label class="sr-only">Password</label>
-                        <input type="password" class="form-control" placeholder="password" v-model="signupFields.password">
-                    </div>
-                </div>
-
-                <div class="col-xs-1">
-                    <div v-on:click="signup" class="btn btn-default btn-lg">Sign Up For Free</div>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
 <section id="section-2" class="section-bg">
     <div class="container feature markdown-body">
         <h2>Readme</h2>
