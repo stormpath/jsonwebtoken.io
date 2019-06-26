@@ -13,7 +13,6 @@
     <div class="toplink">
         <div class="btn-group" role="group" aria-label="...">
             <a href="/" class="btn btn-link">JSON Web Token</a>
-            <a href="https://www.jwtinspector.io/" class="btn btn-link" target="_blank">JWT Inspector</a>
             <a href="https://stormpath.com/blog/beginners-guide-jwts-in-java" class="btn btn-link" target="_blank">JWT101</a>
         </div>
     </div>
