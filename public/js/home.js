@@ -43635,9 +43635,8 @@ Verifier.prototype.verify = function verify(jwtString,cb){
     verified = true;
   }
   else if(signingType === 'hmac') {
-    digest = crypto.createHmac(cryptoAlgName, this.signingKey)
-      .update(digstInput)
-      .digest('base64');
+    var hex = crypto.createHmac(cryptoAlgName, this.signingKey).update(digstInput).digest('hex');
+    digest = btoa(hex.match(/\w{2}/g).map(function(a){return String.fromCharCode(parseInt(a, 16));} ).join(""));
     verified = ( signature === digest );
   }
   else{
